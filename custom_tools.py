@@ -45,18 +45,6 @@ def set_image_dpi(file_name):
     return temp_filename
 
 
-# adaptive Thresholding using cv2 for clear the noise of the image.
-def noise_remove(file_name):
-    img = cv2.imread(file_name)
-    img = cv2.medianBlur(img,5) # noise removing using medianBlur
-
-    grayscaled = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY) # gray scaling the blur image.
-    th = cv2.adaptiveThreshold(grayscaled, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2) # applying theresold.
-
-    cv2.imwrite('temp.png', th) # saving the 
-    return os.path.abspath('temp.png') # getting the path of the cleaned image.
-
-
 # another noise cleaning process or sharpening process using filtration
 def remove_noise(file_name):
     image = cv2.imread(file_name)
@@ -75,17 +63,6 @@ def sl_adaptiveThresold(file_name):
     local_thresh = threshold_local(image, block_size, offset=10) # applying thresold with the offset of 10
     binary_local = image > local_thresh
     img = img_as_ubyte(binary_local) # converting the output into cv2 excecutable format or array.
-    cv2.imwrite('temp.png', img)
-    return os.path.abspath('temp.png')
-
-
-# otsuThresolding using sklearn and cv2
-def sl_otsuThresold(file_name):
-    image = cv2.imread(file_name)
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    global_thresh = threshold_otsu(image) # applying otsu thresholding
-    binary_global = image > global_thresh
-    img = img_as_ubyte(binary_global)
     cv2.imwrite('temp.png', img)
     return os.path.abspath('temp.png')
 
