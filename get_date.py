@@ -13,7 +13,7 @@
 
 
 # importing libraries
-from custom_tools import simple_ocr, getRaw_date, checkForDate, extraction, set_image_dpi, remove_noise, sl_adaptiveThresold
+from custom_tools import simple_ocr, getRaw_date, checkForDate, extraction, set_image_dpi, sl_adaptiveThresold
 from datetime import date
 from datetime import time
 from datetime import datetime
@@ -26,19 +26,10 @@ def result(file_name):
 	l = checkForDate(m)
 
 	if l==None or len(l)==0 or date.today()<datetime.strptime(l[0], "%Y-%m-%d").date():
-		s = simple_ocr(remove_noise(dpi))
-		m = getRaw_date(s)
-		l = checkForDate(m)
-
-	if l==None or len(l)==0 or date.today()<datetime.strptime(l[0], "%Y-%m-%d").date():
 		s = simple_ocr(sl_adaptiveThresold(dpi))
 		m = getRaw_date(s)
 		l = checkForDate(m)
-	
-	if l==None or len(l)==0 or date.today()<datetime.strptime(l[0], "%Y-%m-%d").date():
-		s = extraction(remove_noise(dpi))
-		m = getRaw_date(s)
-		l = checkForDate(m)
+
 
 	if l==None or len(l)==0 or date.today()<datetime.strptime(l[0], "%Y-%m-%d").date():
 		s = extraction(sl_adaptiveThresold(dpi))
@@ -50,11 +41,11 @@ def result(file_name):
 
 
 
-l_date = result('/home/lucifer/acadgild/project/fyle_assignment/0a8a955f.jpeg')
+'''l_date = result('/home/lucifer/acadgild/project/fyle_assignment/0a8a955f.jpeg')
 
 if l_date!=None and len(l_date)!=0:
 	for i in l_date:
 		print(i)
 
 else:
-	print("I can not extract the date")
+	print("I can not extract the date")'''

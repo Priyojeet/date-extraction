@@ -45,16 +45,6 @@ def set_image_dpi(file_name):
     return temp_filename
 
 
-# another noise cleaning process or sharpening process using filtration
-def remove_noise(file_name):
-    image = cv2.imread(file_name)
-    gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
-    sharpen_kernel = np.array([[-1,-1,-1], [-1,10,-1], [-1,-1,-1]]) # creating the kernel to process teh image
-    sharpen = cv2.filter2D(gray, -1, sharpen_kernel) # using the 2d convolution using the kernel
-    cv2.imwrite('temp.png', sharpen)
-    return os.path.abspath('temp.png')
-
-
 # adaptive Thresholding using sklearn and cv2
 def sl_adaptiveThresold(file_name):
     image = cv2.imread(file_name)
