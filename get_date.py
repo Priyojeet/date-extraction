@@ -29,13 +29,6 @@ def result(file_name):
 		s = simple_ocr(sl_adaptiveThresold(dpi))
 		m = getRaw_date(s)
 		l = checkForDate(m)
-
-
-	if l==None or len(l)==0 or date.today()<datetime.strptime(l[0], "%Y-%m-%d").date():
-		s = extraction(sl_adaptiveThresold(dpi))
-		m = getRaw_date(s)
-		l = checkForDate(m)
-
 	
 	return l
 
