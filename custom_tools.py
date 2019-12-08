@@ -80,7 +80,7 @@ def getRaw_date(text):
        		'\d{1,2}\s\w{3},\s\d{4}', "\S+'\d{2}", '\d{1,2}/\w{3}/\d{2,4}', '\d{1,4}\.\d{1,2}\.\d{1,4}',
        		'\d{1,4}/\d{1,2}/\d{1,4}', '\d{1,4}-\d{1,2}-\d{1,4}',
            	'\d{1,2}(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\d{2}', '\d{1,2}/\d{1,2}/\d{4}',
-           	'\d{1,2}-(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-\d{2}']
+           	'\d{1,2}-(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-\d{2}', '(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s\d{2}\s\d{2,4}']
 
     l = []
     for regex in pat:
