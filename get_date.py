@@ -13,7 +13,7 @@
 
 
 # importing libraries
-from custom_tools import simple_ocr, getRaw_date, checkForDate, extraction, set_image_dpi, sl_adaptiveThresold
+from custom_tools import getRaw_date, checkForDate, extraction, set_image_dpi
 from datetime import date
 from datetime import time
 from datetime import datetime
@@ -21,7 +21,7 @@ from datetime import datetime
 
 def result(file_name):
 	dpi = set_image_dpi(file_name)
-	s = simple_ocr(dpi)
+	s = extraction(dpi)
 	m = getRaw_date(s)
 	l = checkForDate(m)
 	return l

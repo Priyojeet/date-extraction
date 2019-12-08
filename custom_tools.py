@@ -45,19 +45,8 @@ def set_image_dpi(file_name):
     return temp_filename
 
 
-# adaptive Thresholding using sklearn and cv2
-def sl_adaptiveThresold(file_name):
-    image = cv2.imread(file_name)
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) # grayscaling
-    block_size = 35 # defining the block size
-    local_thresh = threshold_local(image, block_size, offset=10) # applying thresold with the offset of 10
-    binary_local = image > local_thresh
-    img = img_as_ubyte(binary_local) # converting the output into cv2 excecutable format or array.
-    cv2.imwrite('temp.png', img)
-    return os.path.abspath('temp.png')
 
-
-# text extraction process 1
+# text extraction process
 def extraction(file_name):
     img = Image.open(file_name)
     width, height = img.size # getting the size of the original image.
@@ -69,12 +58,6 @@ def extraction(file_name):
     imagetext = pytesseract.image_to_string(img)
 
     return imagetext
-
-
-# common text extraction process 2.
-def simple_ocr(filename):
-    text = pytesseract.image_to_string(Image.open(filename))
-    return text
 
 
 # text cleaning of the extracted text
